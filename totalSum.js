@@ -49,10 +49,3 @@ const payments = [
     year: 2023
     }
     ]
-
-let sum = payments.reduce((sum,payment) => sum + payment.payedAmount,0)
-
-let averegeAll = sum / payments.length
-
-console.log(averegeAll);
-
