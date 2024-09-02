@@ -8,12 +8,28 @@ const evaluations = [
     { studentId: 3, studentName: "Sarah Conor", courseId: 1, courseName: "JS Bootcamp", score: 45 },  
     { studentId: 3, studentName: "Sarah Conor", courseId: 2, courseName: "JS Level 0", score: 35 },  
     { studentId: 3, studentName: "Sarah Conor", courseId: 3, courseName: "JS Level 1", score: 25 }  
-]; 
+];  
 
-const Score60student = []
-let studentScore = evaluations.filter(evaluation => {
-    if(evaluation.score >= 60){
-        Score60student.push(evaluation.studentName)
-    }
-} )
-console.log(Score60student);
+function getCoursesWithAverageEvaluation(evaluations) {  
+    const courseMap = {};  
+
+    evaluations.forEach(({ courseId, courseName, score }) => {  
+        if (!courseMap[courseId]) {  
+            courseMap[courseId] = { courseName, totalScore: 0, count: 0 };  
+        }  
+        courseMap[courseId].totalScore += score;  
+        courseMap[courseId].count += 1;  
+    });  
+
+    const coursesWithAverage = Object.values(courseMap).map(course => {  
+        return {  
+            courseName: course.courseName,  
+            averageScore: (course.totalScore / course.count).toFixed(2)  
+        };  
+    });  
+
+    return coursesWithAverage;  
+}  
+
+const result = getCoursesWithAverageEvaluation(evaluations);  
+console.log(result);  
