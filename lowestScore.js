@@ -54,5 +54,5 @@ score: 25
 let lowestScore = evaluations.reduce((lowestScore,evaluation) =>{
     return evaluation.score < lowestScore.score ? evaluation:lowestScore 
 } )
-
 console.log(lowestScore);
+console.log(lowestScore.score);
