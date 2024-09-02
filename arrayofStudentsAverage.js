@@ -63,11 +63,25 @@ const evaluations = [
       score: 25
     }
   ];
-  
-const Score60student = []
-let studentScore = evaluations.filter(evaluation => {
-    if(evaluation.score >= 60){
-        Score60student.push(evaluation.studentName)
-    }
-} )
-console.log(Score60student);
+
+  function getStudentsWithLowAverage(evaluations) {  
+    const studentScores = {};  
+
+    evaluations.forEach(evaluation => {  
+        if (!studentScores[evaluation.studentId]) {  
+            studentScores[evaluation.studentId] = { totalScore: 0, numCourses: 0, studentName: evaluation.studentName };  
+        }  
+        studentScores[evaluation.studentId].totalScore += evaluation.score;  
+        studentScores[evaluation.studentId].numCourses += 1;  
+    });  
+
+    const lowAverageStudents = Object.values(studentScores).filter(student => {  
+        const average = student.totalScore / student.numCourses;  
+        return average < 40;  
+    });  
+
+    return lowAverageStudents;  
+}  
+
+const result = getStudentsWithLowAverage(evaluations);  
+console.log(result)
