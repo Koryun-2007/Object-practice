@@ -49,3 +49,17 @@ const payments = [
     year: 2023
     }
     ]
+
+
+    const totalPayments = payments.reduce((acc, payment) => {  
+        const { studentId, studentName, payedAmount } = payment;  
+        if (!acc[studentId]) {  
+            acc[studentId] = { studentId, studentName, totalPaid: 0 };  
+        }  
+        acc[studentId].totalPaid += payedAmount;  
+        return acc;  
+    }, {});  
+    
+    const result = Object.values(totalPayments);  
+    
+    console.log(result); 
