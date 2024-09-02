@@ -63,9 +63,10 @@ const evaluations = [
       score: 25
     }
   ];
-    
-    let lowestScore = evaluations.reduce((lowestScore,evaluation) =>{
-        return evaluation.score < lowestScore.score ? evaluation:lowestScore 
-    } )
-    console.log(lowestScore.studentName);
-    
+const Score60student = []
+let studentScore = evaluations.filter(evaluation => {
+    if(evaluation.score >= 60){
+        Score60student.push(evaluation.studentName)
+    }
+} )
+console.log(Score60student);
