@@ -1,10 +1,15 @@
 debugger
 function sum(initial) {  
     return function(x) {  
-        return initial + x;  
+        if (typeof initial === "number" && typeof x === "number"){
+            return initial + x;  
+        }else{
+        	return "write vaild number"
+        }
+        
     };  
 }  
-console.log(sum(1)(2));
+console.log(sum(1)("a"));
 const addOne = sum(1);
 console.log(addOne(2));  
 const addTen = sum(10);  
