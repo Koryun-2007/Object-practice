@@ -7,7 +7,7 @@ function VaildString(value){
 function add_suffix(initial) {  
     return function(x) {  
         if (VaildString(initial) && VaildString(x)){
-            return initial + x;  
+            return x + initial;  
         }
         	return "write vaild string"
         
