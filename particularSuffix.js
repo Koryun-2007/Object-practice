@@ -1,4 +1,4 @@
-function notVaildString(value){
+function VaildString(value){
     if (typeof value !== "string" ){
         return false
     }
@@ -6,7 +6,7 @@ function notVaildString(value){
 }
 function add_suffix(initial) {  
     return function(x) {  
-        if (notVaildString(initial) && notVaildString(x)){
+        if (VaildString(initial) && VaildString(x)){
             return initial + x;  
         }
         	return "write vaild string"
